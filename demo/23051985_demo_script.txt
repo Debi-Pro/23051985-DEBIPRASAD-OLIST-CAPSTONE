@@ -1,0 +1,35 @@
+OLIST E-COMMERCE ANALYTICS — 5-MINUTE DEMO
+Student: Debiprasad Mishra
+Roll Number: 23051985
+
+0:00–0:45 — INTRODUCTION
+
+This project implements an end-to-end analytics pipeline for the Olist Brazilian e-commerce dataset using Databricks. The three business questions focus on delivery performance and reviews, repeat-customer revenue, and seller reliability.
+
+0:45–2:30 — PIPELINE
+
+Show the Databricks Job run.
+
+Explain that the pipeline has three dependent Serverless tasks: Bronze, Silver and Gold. All three tasks completed successfully.
+
+Open Bronze and show the nine source datasets and their row counts. Explain that Bronze preserves the raw source structure in Delta tables.
+
+Open Silver and show the cleaned joined dataset. Explain the timestamp standardization, duplicate handling, joins and derived fields such as delivery_days, is_late, order_quarter and revenue. Mention the 113,425 Silver rows.
+
+Open Gold and show the three business tables: category delivery, customer revenue and seller reliability.
+
+2:30–4:00 — SNOWFLAKE HANDOVER
+
+Show the architecture diagram and explain the intended Gold-to-Snowflake flow: Gold export, Snowflake stage, COPY INTO and COPY_HISTORY.
+
+State clearly that Snowflake execution was not completed because a working Snowflake account was not available during implementation. Do not claim a successful Snowflake load or COPY_HISTORY result.
+
+4:00–5:00 — ANSWERS
+
+Q1: The displayed category results show home_comfort_2 with a 16.67% late rate, furniture_mattress_and_upholstery at 13.16%, and audio at 12.64%. Office_furniture has a displayed average delivery time of 20.79 days and a 3.49 average review score.
+
+Q2: Repeat-customer share by customer count rises to 5.81% in 2017-Q2 and then falls to 3.58% in 2018-Q3. The final 2018-Q4 row has only four customers and zero revenue, so it should not be interpreted as a normal business quarter.
+
+Q3: The seller output shows high late rates for some sellers. The top displayed seller has a 50% late rate and a 1.72 average review score; another has a 48.94% late rate and a 2.57 average review score.
+
+Close by showing the hosted project page and repository structure.

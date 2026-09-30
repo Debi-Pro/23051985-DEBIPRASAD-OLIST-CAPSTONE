@@ -1,0 +1,22 @@
+-- Snowflake handover template.
+-- This file documents the required Gold -> stage -> COPY INTO flow from the capstone brief.
+-- It was not executed because a working Snowflake account was not available for this project.
+
+-- CREATE OR REPLACE STAGE OLIST_GOLD_STAGE;
+
+-- PUT 'file:///path/to/gold_category_delivery.csv' @OLIST_GOLD_STAGE AUTO_COMPRESS=TRUE;
+-- PUT 'file:///path/to/gold_customer_revenue.csv' @OLIST_GOLD_STAGE AUTO_COMPRESS=TRUE;
+-- PUT 'file:///path/to/gold_seller_reliability.csv' @OLIST_GOLD_STAGE AUTO_COMPRESS=TRUE;
+
+-- CREATE OR REPLACE TABLE GOLD_CATEGORY_DELIVERY (...);
+-- CREATE OR REPLACE TABLE GOLD_CUSTOMER_REVENUE (...);
+-- CREATE OR REPLACE TABLE GOLD_SELLER_RELIABILITY (...);
+
+-- COPY INTO GOLD_CATEGORY_DELIVERY FROM @OLIST_GOLD_STAGE FILE_FORMAT=(TYPE=CSV SKIP_HEADER=1);
+-- COPY INTO GOLD_CUSTOMER_REVENUE FROM @OLIST_GOLD_STAGE FILE_FORMAT=(TYPE=CSV SKIP_HEADER=1);
+-- COPY INTO GOLD_SELLER_RELIABILITY FROM @OLIST_GOLD_STAGE FILE_FORMAT=(TYPE=CSV SKIP_HEADER=1);
+
+-- SELECT * FROM TABLE(INFORMATION_SCHEMA.COPY_HISTORY(
+--     TABLE_NAME=>'GOLD_CATEGORY_DELIVERY',
+--     START_TIME=>DATEADD('day', -7, CURRENT_TIMESTAMP())
+-- ));
